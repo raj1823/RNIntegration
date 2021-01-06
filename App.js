@@ -31,7 +31,7 @@ sagaMiddleware.run(rootSaga);
 
 export let rootTag = 1;
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     Toast.show(`Message from native: "${this.props.message_from_native}"`);
@@ -49,6 +49,6 @@ export default class App extends Component {
   }
 }
 
-// let codePushOptions = {checkFrequency: codePush.CheckFrequency.ON_APP_START};
-// export default CodePush(codePushOptions)(App);
+let codePushOptions = {checkFrequency: codePush.CheckFrequency.ON_APP_START};
+export default codePush(codePushOptions)(App);
 

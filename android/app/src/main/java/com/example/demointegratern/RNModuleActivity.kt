@@ -15,13 +15,18 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage
 import com.swmansion.reanimated.ReanimatedPackage
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage
+import com.microsoft.codepush.react.CodePush
 
 class RNModuleActivity : Activity(), DefaultHardwareBackBtnHandler {
     private var mReactRootView: ReactRootView? = null
     private var mReactInstanceManager: ReactInstanceManager? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         SoLoader.init(this, false)
+
+
 
         // If not, navigation.goBack() not working
         mReactRootView = RNGestureHandlerEnabledRootView(this)
@@ -47,7 +52,15 @@ class RNModuleActivity : Activity(), DefaultHardwareBackBtnHandler {
         initialProperties.putString("message_from_native", intent?.extras?.get("message_from_native")?.toString())
         (mReactRootView as RNGestureHandlerEnabledRootView).startReactApplication(mReactInstanceManager, "DemoIntegrateRN", initialProperties)
         setContentView(mReactRootView)
+         fun getJsBundleFile(): String {
+            return CodePush.getJSBundleFile();
+        }
+
+
     }
+
+
+
 
     override fun invokeDefaultOnBackPressed() {
         super.onBackPressed()
@@ -66,6 +79,9 @@ class RNModuleActivity : Activity(), DefaultHardwareBackBtnHandler {
             mReactInstanceManager!!.onHostResume(this, this)
         }
     }
+
+
+
 
     override fun onDestroy() {
         super.onDestroy()
