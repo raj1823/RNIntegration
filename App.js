@@ -11,6 +11,8 @@ import RootContainer from './src/Root/RootContainer.Screen';
 import 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Toast from 'react-native-simple-toast';
+import codePush from 'react-native-code-push';
+
 // for iOS only since enable use_frameworks! in podfile
 MaterialCommunityIcons.loadFont();
 
@@ -46,4 +48,7 @@ export default class App extends Component {
     );
   }
 }
+
+// let codePushOptions = {checkFrequency: codePush.CheckFrequency.ON_APP_START};
+// export default CodePush(codePushOptions)(App);
 
