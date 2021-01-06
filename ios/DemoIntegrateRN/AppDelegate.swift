@@ -2,11 +2,10 @@
 //  AppDelegate.swift
 //  DemoIntegrateRN
 //
-//  Created by duytq on 3/12/20.
-//  Copyright © 2020 duytq. All rights reserved.
-//
+
 
 import UIKit
+import CodePush
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

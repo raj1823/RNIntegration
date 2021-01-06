@@ -1,5 +1,6 @@
 import Foundation
 import React
+import CodePush
 
 class RNViewManager: NSObject {
     var bridge: RCTBridge?
@@ -26,9 +27,12 @@ class RNViewManager: NSObject {
 extension RNViewManager: RCTBridgeDelegate {
     func sourceURL(for bridge: RCTBridge!) -> URL! {
         #if DEBUG
-            return URL(string: "http://localhost:8081/index.bundle?platform=ios")
+        return URL(string: "http://localhost:8081/index.bundle?platform=ios")
+        
+           
         #else
-            return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+//            return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+         return CodePush.bundleURL
         #endif
     }
 }
